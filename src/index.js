@@ -34,6 +34,28 @@ new Promise((resolve, reject) => {
     });
 });
 
+app.get("/", (req, res) => {
+    res.send("Hello World");
+});
+
+//listar usuários cadastrados
+app.get("/users", (req, res) => {
+    res.json(users);
+});
+
+//cadastrar usuário
+app.post("/users", (req, res) => {
+    const { name, email } = req.body;
+    const newUser = {
+        id: Math.random().toString(36).substr(2, 9),
+        name,
+        email,
+    };
+
+    users.push(newUser);
+    res.json(newUser);
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
