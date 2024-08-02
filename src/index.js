@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const nodemailer = require('nodemailer');
 
 const smtp = nodemailer.createTransport({
@@ -8,8 +8,8 @@ const smtp = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: "bugtrakers@gmail.com",
-        pass: "fxaa avww tpqd jayw"
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
